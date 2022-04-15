@@ -28,6 +28,7 @@ https://stripe.com/docs/payments/quickstart
 -- https://dashboard.stripe.com/settings/payment_methods
 -- https://stripe.com/docs/payments/payment-methods/integration-options#payment-method-product-support
 3. Create a PaymentIntent
+
 --支付方式需要支持 PaymentIntent 中的货币
 4. Collect payment details
 -- Payment Element 
@@ -38,4 +39,10 @@ x. Customize the appearance(optional)
 6. Handle post-payment events
 --webhook
 7. Test the integration
+
+# US/Canadian(no bank authentication)
+https://stripe.com/docs/payments/without-card-authentication?platform=web#how-this-integration-works
+
+
+
 

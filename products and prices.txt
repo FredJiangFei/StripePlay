@@ -1,0 +1,35 @@
+Getting started
+--products: goods/services
+--prices: price for products
+
+#product
+-- e-commerce: xl red t-shirt
+-- SaaS: basic/premium membership
+-- donation platform
+## tax: Stripe 根据 tax code 自动计算tax
+
+#price
+
+
+## price models
+
+### Model good-better-best
+https://stripe.com/docs/products-prices/pricing-models#model-good-better-best-on-stripe
+product -> price -> subscription
+
+### Per-seat
+product -> price -> per_seat(quantity)
+
+### Usage-based pricing
+--0-60 min $1/min
+--61-120 min $0.5/min
+
+### Tiered pricing 分层定价
+1-5 projects 7 USD
+6-10 projects 6.5USD
+
+### Multiple prices
+同样产品不同价格， 提前支付年费享受折扣
+不同区域，不同货币，不同价格
+
+### Advanced pricing models
