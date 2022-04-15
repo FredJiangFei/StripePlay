@@ -35,14 +35,14 @@ app.MapGet("/create-payment-intent", async () =>
 {
     try
     {
-        var customers = new CustomerService();
-        var customer = customers.Create(new CustomerCreateOptions());
+        //var customers = new CustomerService();
+        //var customer = customers.Create(new CustomerCreateOptions());
 
         var service = new PaymentIntentService();
         var paymentIntent = await service.CreateAsync(new PaymentIntentCreateOptions
         {
-            Customer = customer.Id,
-            SetupFutureUsage = "off_session",
+            //Customer = customer.Id,
+            //SetupFutureUsage = "off_session",
             Amount = 1999,
             Currency = "EUR",
             AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
