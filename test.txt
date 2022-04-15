@@ -1,0 +1,8 @@
+# Developer tools
+https://stripe.com/docs/development/quickstart
+
+## test card: 
+4242424242424242  succeeded
+4000002760003184  requires_action
+4000000000009995  incorrect_number
+4000002500003155  authentication_not_handled

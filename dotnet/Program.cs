@@ -1,4 +1,3 @@
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
 using Stripe;
 
@@ -30,31 +29,31 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(),
-        Environment.GetEnvironmentVariable("STATIC_DIR"))
-    ),
-    RequestPath = new PathString("")
-});
-
-app.MapGet("/", () => Results.Redirect("index.html"));
 app.MapGet("/config", (IOptions<StripeOptions> options) => new { options.Value.PublishableKey });
 
 app.MapGet("/create-payment-intent", async () =>
 {
     try
     {
+        var customers = new CustomerService();
+        var customer = customers.Create(new CustomerCreateOptions());
+
         var service = new PaymentIntentService();
         var paymentIntent = await service.CreateAsync(new PaymentIntentCreateOptions
         {
+            Customer = customer.Id,
+            SetupFutureUsage = "off_session",
             Amount = 1999,
             Currency = "EUR",
             AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
             {
                 Enabled = true,
-            },
+            }
+            //PaymentMethodTypes = new List<string>
+            //{
+            //    "alipay",
+            //    "card"
+            //}
         });
 
         return Results.Ok(new { ClientSecret = paymentIntent.ClientSecret });
@@ -64,6 +63,50 @@ app.MapGet("/create-payment-intent", async () =>
         return Results.BadRequest(new { error = new { message = e.StripeError.Message } });
     }
 });
+
+
+//public void ChargeCustomer(string customerId)
+//{
+//    // Lookup the payment methods available for the customer
+//    var paymentMethods = new PaymentMethodService();
+//    var availableMethods = paymentMethods.List(new PaymentMethodListOptions
+//    {
+//        Customer = customerId,
+//        Type = "card",
+//    });
+//    try
+//    {
+//        // Charge the customer and payment method immediately
+//        var paymentIntentService = new PaymentIntentService();
+//        var paymentIntent = paymentIntentService.Create(new PaymentIntentCreateOptions
+//        {
+//            Amount = 1099,
+//            Currency = "eur",
+//            Customer = customerId,
+//            PaymentMethod = availableMethods.Data[0].Id,
+//            OffSession = true,
+//            Confirm = true
+//        });
+//    }
+//    catch (StripeException e)
+//    {
+//        switch (e.StripeError.ErrorType)
+//        {
+//            case "card_error":
+//                // Error code will be authentication_required if authentication is needed
+//                Console.WriteLine("Error code: " + e.StripeError.Code);
+//                var paymentIntentId = e.StripeError.PaymentIntent.Id;
+//                var service = new PaymentIntentService();
+//                var paymentIntent = service.Get(paymentIntentId);
+
+//                Console.WriteLine(paymentIntent.Id);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+//}
+
 
 app.MapPost("/webhook", async (HttpRequest request, IOptions<StripeOptions> options) =>
 {

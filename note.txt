@@ -1,0 +1,41 @@
+# Compare features and availability
+1. Stripe Payment Links， 
+	无代码，通过email分享link支付, Stripe Tax support(yes)
+2. Stripe Checkout， 
+	少量代码, web, Stripe payment page, Stripe Tax support(yes)
+3. Stripe Elements, 
+	大量代码, web/mobile native, 自己开发payment page, Stripe Tax support(Private beta) ??
+
+
+# Tax ??
+1. Confirm your origin address (optional)， 配置business located 或者 发货地址(实体商品)
+2. Select a default tax category
+3. Add registrations
+4. Add Stripe Tax to your integration
+
+# How cards work
+1. Checking card details
+2. Customer authentication
+3. Authorization
+4. Capture
+
+# Quickstart
+https://stripe.com/docs/payments/quickstart
+
+# Accept a payment
+1. Set up Stripe
+2. Enable payment methods
+-- https://dashboard.stripe.com/settings/payment_methods
+-- https://stripe.com/docs/payments/payment-methods/integration-options#payment-method-product-support
+3. Create a PaymentIntent
+--支付方式需要支持 PaymentIntent 中的货币
+4. Collect payment details
+-- Payment Element 
+x. Customize the appearance(optional)
+5. Submit the payment to Stripe
+-- stripe.confirmPayment
+-- return_url
+6. Handle post-payment events
+--webhook
+7. Test the integration
+

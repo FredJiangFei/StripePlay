@@ -13,7 +13,8 @@ function Completion(props) {
       const { error, paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
 
       setMessageBody(error ? `> ${error.message}` : (
-        <>&gt; Payment {paymentIntent.status}: <a href={`https://dashboard.stripe.com/test/payments/${paymentIntent.id}`} target="_blank" rel="noreferrer">{paymentIntent.id}</a></>
+        <>&gt; Payment {paymentIntent.status}: 
+          <a href={`https://dashboard.stripe.com/test/payments/${paymentIntent.id}`} target="_blank" rel="noreferrer">{paymentIntent.id}</a></>
       ));
     });
   }, [stripePromise]);
