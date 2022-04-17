@@ -17,8 +17,7 @@ export default function CheckoutForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/completion`,
-        receipt_email: 'jiangf@shinetechsoftware.com'
+        return_url: `${window.location.origin}/completion`
       },
     });
 

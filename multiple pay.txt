@@ -1,0 +1,15 @@
+# Stripe Connect
+https://stripe.com/docs/connect#features
+--Payouts: 
+--Fee collection:
+--Onboarding:
+
+# Collect payments then pay out
+1. Create connected account/
+https://stripe.com/docs/connect/accounts
+* Standard
+* Express
+* Custom
+
+# Customize branding
+https://stripe.com/docs/connect/creating-a-payments-page?platform=web&ui=checkout#branding

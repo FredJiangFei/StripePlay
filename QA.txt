@@ -1,0 +1,8 @@
+1. who pay stripe fee?
+10 ==> Application fee ($1.23 = $0.59(Stripe fees) + $0.64)
+     ==> League owner($8.77)
+
+10 ==> Application fee ($1.23)
+     ==> League owner($8.77 = $0.59(Stripe fees) + $8.18)
+
+2. What is rate of application fee?

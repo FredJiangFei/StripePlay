@@ -1,0 +1,4 @@
+1. Your destination account needs to have at least one of the following capabilities enabled: transfers, legacy_payments?
+
+
+2. You must provide an account with capabilities when creating an account link of type "account_onboarding" for an account in a country that is not enabled for Express. You can enable US in your Country and Capabilities settings at https://dashboard.stripe.com/settings/applications/express
