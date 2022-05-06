@@ -6,13 +6,30 @@ namespace StripeTest
 {
     public class StripeHelper
     {
-        public void CreateCustomer (){
+        public Customer CreateCustomer (string email){
             var options = new CustomerCreateOptions
             {
+                Email = email,
                 Description = "My First Test Customer",
             };
             var service = new CustomerService();
-            service.Create(options);
+            var customer = service.Create(options);
+            return customer;
+        }
+
+        public WebhookEndpoint CreateWebhookEndpoint (){
+          var endpointOptions = new WebhookEndpointCreateOptions
+            {
+                ApiVersion = StripeConfiguration.ApiVersion,
+                Url = "https://example.com/my/webhook/endpoint",
+                EnabledEvents = new List<string>
+               {
+                   "customer.created"
+               }
+            };
+            var endpointService = new WebhookEndpointService();
+            var endpoint = endpointService.Create(endpointOptions);
+            return endpoint;
         }
 
         public void CreateAPaymentIntent(){
@@ -45,6 +62,12 @@ namespace StripeTest
             Charge charge = service.Create(options);
             Console.Write(charge);
         }
-        
+
+        public StripeList<Event> GetEvents() {
+            var eventOptions = new EventListOptions { Limit = 1 };
+            var eventService = new EventService();
+            StripeList<Event> events = eventService.List(eventOptions);
+            return events;
+        }
     }
 }
