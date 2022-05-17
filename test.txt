@@ -16,27 +16,5 @@ https://stripe.com/docs/development/quickstart
 
 
 # Address
-Mr Smith  
-Parcel Monkey
-PO Box 105
-San Francisco CA 12345
-USA
-
-Ms Alice Smith
-Apartment 1c
-213 Derrick Street
-Boston, MA 02130
-USA
-
-Ms T. Globelle
-Paragon Productions
 PO Box 5404
 Los Angeles, CA 90210
-USA
-
-Mr James Smith
-Transglobal Express
-PO Box 1234
-Bromborough
-CH62 3NX
-UK
