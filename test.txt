@@ -13,8 +13,6 @@ https://stripe.com/docs/development/quickstart
 757-85-7495
 149-13-7317
 
-
-
 # Address
 PO Box 5404
 Los Angeles, CA 90210

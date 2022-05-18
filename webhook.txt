@@ -1,0 +1,3 @@
+stripe listen --forward-to localhost:52384/api/payments/completed/webhook
+stripe listen --forward-to localhost:52384/api/payments/succeeded/webhook
+stripe listen --forward-to localhost:52384/api/payments/failed/webhook
